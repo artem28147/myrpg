@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 public class ModuleBotTest {
     @Test
     public void test_1() {
-        Assert.assertEquals(1, 1);
+        Assert.assertEquals(1, 2);
     }
 }
+
