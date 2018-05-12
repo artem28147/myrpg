@@ -47,6 +47,13 @@ project(":desktop") {
         testCompile 'junit:junit:4.12'
         compile 'junit:junit:4.12'
     }
+    sourceSets {
+        test {
+            java {
+                srcDir "Tests"
+            }
+        }
+    }
 }
 
 project(":core") {
@@ -58,6 +65,13 @@ project(":core") {
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         testCompile 'junit:junit:4.12'
         compile 'junit:junit:4.12'
+    }
+    sourceSets {
+        test {
+            java {
+                srcDir "Tests"
+            }
+        }
     }
 }
 
