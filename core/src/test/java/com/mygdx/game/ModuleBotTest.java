@@ -91,7 +91,7 @@ public class ModuleBotTest {
         mob.setField(game.field);
         bot.run();
         Assert.assertEquals(game.field.units.size(), 1);
-        Assert.assertEquals(game.player.model.getPosition().getX(), 98.0,0.0001);
+        Assert.assertEquals(game.player.model.getPosition().getX(), 96.0,0.0001);
         Assert.assertEquals(game.player.model.getPosition().getY(), 0.0,0.0001);
     }
 }
