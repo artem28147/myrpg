@@ -19,14 +19,21 @@ public class PlayerController extends UnitController {
     SpriteBatch batch;
     boolean inventoryOpened = false;
     boolean shopOpened = false;
-    Texture shopBackground = new Texture("shopBackground.jpg");
-    Texture inventoryBackground = new Texture("inventoryBackground.jpg");
-    BitmapFont font = new BitmapFont();
-
-    PlayerController(SpriteBatch b) {
+    Texture shopBackground;
+    Texture inventoryBackground;
+    BitmapFont font;
+    boolean test = false;
+    PlayerController(SpriteBatch b, boolean test) {
+        super(test);
+        this.test=test;
         batch = b;
         setModel(new PlayerModel());
-        setView(new PlayerView());
+        if (!test) {
+            font = new BitmapFont();
+            shopBackground = new Texture("shopBackground.jpg");
+            inventoryBackground = new Texture("inventoryBackground.jpg");
+            setView(new PlayerView());
+        }
     }
 
     @Override
@@ -44,7 +51,8 @@ public class PlayerController extends UnitController {
      */
     public void attack(UnitController enemy, Position pos) {
         super.attack(enemy);
-        getView().setAttack();
+        if(!test)
+            getView().setAttack();
     }
 
     /**
@@ -223,7 +231,8 @@ public class PlayerController extends UnitController {
             getModel().setLevel(getModel().getLevel() + 1);
             getModel().setCurrentHp(getModel().getHp());
         }
-        getView().setStand();
+        if (!test)
+            getView().setStand();
     }
 
     /**

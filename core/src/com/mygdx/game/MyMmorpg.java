@@ -33,8 +33,8 @@ public class MyMmorpg extends ApplicationAdapter {
     public void create() {
         //Инициализация переменных
         batch = new SpriteBatch();
-        field = new Field();
-        player = new PlayerController(batch);
+        field = new Field(false);
+        player = new PlayerController(batch, false);
         player.setField(field);
         player.addPlayerActionListener(new MenuManager());
         module = null;
@@ -61,7 +61,7 @@ public class MyMmorpg extends ApplicationAdapter {
         while (field.getUnits().size() < 15) {
             //с 15% шансом создается сильный монстр, 85% - слабый
             if (new Random().nextFloat() < 0.85f)
-                mob = new MonsterController(new Position((Math.random() * (field.getWidth() - 65)), Math.random() * (field.getLength() - 85)));
+                mob = new MonsterController(new Position((Math.random() * (field.getWidth() - 65)), Math.random() * (field.getLength() - 85)),false);
             else
                 mob = new MonsterController(new Position((Math.random() * (field.getWidth() - 65)), Math.random() * (field.getLength() - 85)), "bubble");
             field.addUnit(mob);
@@ -209,14 +209,14 @@ public class MyMmorpg extends ApplicationAdapter {
             gameStarted = true;
             playerDied = false;
             field.units.clear();
-            player = new PlayerController(batch);
+            player = new PlayerController(batch,false);
             player.setField(field);
             player.addPlayerActionListener(new MenuManager());
             field.addUnit(player);
             MonsterController mob;
             while (field.getUnits().size() < 15) {
                 if (new Random().nextFloat() < 0.65f)
-                    mob = new MonsterController(new Position((Math.random() * (field.getWidth() - 65)), Math.random() * (field.getLength() - 85)));
+                    mob = new MonsterController(new Position((Math.random() * (field.getWidth() - 65)), Math.random() * (field.getLength() - 85)),false );
                 else
                     mob = new MonsterController(new Position((Math.random() * (field.getWidth() - 65)), Math.random() * (field.getLength() - 85)), "bubble");
                 field.addUnit(mob);

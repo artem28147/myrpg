@@ -14,19 +14,23 @@ import com.mygdx.game.events.*;
 public class MonsterController extends UnitController {
     private Field field = null; //поле, на котором находится монстр
 
-    MonsterController(Position pos) {
+    MonsterController(Position pos, boolean test) {
+        super(test);
         setModel(new MonsterModel());
-        setView(new MonsterView());
+        if (!test)
+            setView(new MonsterView());
         getModel().setPosition(pos);
     }
 
     MonsterController() {
+        super(false);
         setModel(new MonsterModel());
         setView(new MonsterView());
         getModel().setPosition(new Position(0, 0));
     }
 
     MonsterController(String name) {
+        super(false);
         setModel(new MonsterModel());
         setView(new MonsterView());
         //В зависимости от введенного названия монстра, меняем его
@@ -39,6 +43,7 @@ public class MonsterController extends UnitController {
     }
 
     MonsterController(Position pos, String name) {
+        super(false);
         setModel(new MonsterModel());
         setView(new MonsterView());
         getModel().setPosition(pos);

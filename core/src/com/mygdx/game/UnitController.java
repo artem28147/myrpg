@@ -9,9 +9,12 @@ import java.util.Random;
  */
 abstract public class UnitController {
     private UnitView view;
-    private UnitModel model;
+    public UnitModel model;
     private Field field;
-
+    boolean test = false;
+    UnitController(boolean test){
+        this.test = test;
+    }
     /**
      * Двигаться в указанном направлении
      */
@@ -20,25 +23,29 @@ abstract public class UnitController {
         switch (d) {
             case UP:
                 if (newPos.getY() < field.getLength() - model.getSize().y) {
-                    view.setUp();
+                    if (!test)
+                        view.setUp();
                     newPos.setY(newPos.getY() + 2);
                 }
                 break;
             case DOWN:
                 if (newPos.getY() > 0) {
-                    view.setDown();
+                    if (!test)
+                        view.setDown();
                     newPos.setY(newPos.getY() - 2);
                 }
                 break;
             case LEFT:
                 if (newPos.getX() > 0) {
-                    view.setLeft();
+                    if (!test)
+                        view.setLeft();
                     newPos.setX(newPos.getX() - 2);
                 }
                 break;
             case RIGHT:
                 if (newPos.getX() < field.getWidth() - model.getSize().x) {
-                    view.setRight();
+                    if (!test)
+                        view.setRight();
                     newPos.setX(newPos.getX() + 2);
                 }
                 break;

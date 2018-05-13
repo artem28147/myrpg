@@ -13,11 +13,14 @@ import java.util.*;
 public class Field {
     private int length = 768; //длина
     private int width = 1024; //ширина
-    private Texture texture = new Texture("map.jpg"); //текстура поля
+    private Texture texture; //текстура поля
     List<UnitController> units = new ArrayList<UnitController>(); //список юнитов на поле
     List<Item> items = new ArrayList<Item>(); //список предметов на поле
     List<Effect> effects = new ArrayList<Effect>(); //список эффектов на поле
-
+    Field (boolean test){
+        if (!test)
+            texture = new Texture("map.jpg");
+    }
     /**
      * Получить текстуру
      */
